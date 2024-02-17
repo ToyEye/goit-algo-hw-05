@@ -24,26 +24,37 @@ def load_logs(file_path: str) -> list:
 
 
 def filter_logs_by_level(logs: list, level: str) -> list:
-    pass
+
+    filtered_list = list(filter(lambda log:log.get("level").upper()==level.upper(),logs))
+    return filtered_list
 
 def count_logs_by_level(logs: list) -> dict:
-    pass
+    logs_by_level = Counter(log["level"] for log in logs)
+    return dict(logs_by_level)
 
 def display_log_counts(counts: dict):
-    pass
+    print(counts)
 
 
 def main():
-    # if len(sys.argv)<2:
-    #     user_input = ''
-    # else:
-    #     user_input= sys.argv[1] 
-
     try:
         file_path = Path("logfile.log")
 
         loglist = load_logs(file_path)
-        print(loglist)
+        # print(loglist)
+
+        if len(sys.argv)<2:
+            level = ''
+        else:
+            level= sys.argv[1] 
+
+        if level:
+            filtered_logs = filter_logs_by_level(loglist,level)
+
+        counts = count_logs_by_level(loglist)
+
+        display_log_counts(counts)
+
     except Exception as e:
         print(e)   
 
