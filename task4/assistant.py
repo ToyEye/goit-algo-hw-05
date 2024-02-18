@@ -1,5 +1,7 @@
 from handlers import add_contact, change_contact, show_all,show_phone
+from decorators import input_error
 
+# @input_error
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()

@@ -1,9 +1,12 @@
+from decorators import input_error
+
+@input_error
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
-
+@input_error
 def change_contact(args, contacts):
     name, phone = args
 
@@ -12,7 +15,8 @@ def change_contact(args, contacts):
         return "Contact changed."
     else:
         return "Conctact not exist"
-
+    
+@input_error
 def show_phone(args, contacts):
     name = args[0]
 
@@ -23,6 +27,7 @@ def show_phone(args, contacts):
 
     else:
         return "Conctact not exist"
-
+    
+@input_error
 def show_all(contacts):
     return contacts
