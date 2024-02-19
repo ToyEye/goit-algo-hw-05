@@ -3,7 +3,7 @@ from typing import Callable
 
 def generator_numbers(text: str):
 
-    pattern= r'\b\d+\.\d+\b|\b\d+\b'
+    pattern= r'\s\d+\.\d\d\s'
 
     numbers = re.findall(pattern, text) # шукаємо всі числа
     
