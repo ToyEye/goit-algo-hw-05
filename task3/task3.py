@@ -43,15 +43,16 @@ def display_log_counts(counts: dict):
 
 
 def main():
+    
     try:
-        file_path = Path("logfile.log")
-
-        loglist = load_logs(file_path)
-
-        if len(sys.argv)<2:
+        if len(sys.argv)<3:
             level = ''
         else:
-            level= sys.argv[1] 
+            level= sys.argv[2] 
+
+        file_path = Path(sys.argv[1])
+
+        loglist = load_logs(file_path)
 
         counts = count_logs_by_level(loglist)
 
